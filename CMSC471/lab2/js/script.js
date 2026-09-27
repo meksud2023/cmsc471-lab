@@ -38,6 +38,7 @@ svg.selectAll('rect')  // Select all rectangles (none exist yet so they are plac
     .attr('width', xScale.bandwidth())        // Width from band scale, a fixed number
     .attr('height', d => height - yScale(d))  // Height calculation
     .attr('fill', (d, i) => myColors[i % myColors.length]);
+   
 
 const xAxis = d3.axisBottom(xScale);
 svg.append('g')
@@ -45,8 +46,9 @@ svg.append('g')
    .call(xAxis);
 
 const yAxis = d3.axisLeft(yScale)
-    .tickSize(-width); 
-
+    .ticks(10)
+    .tickSize(-width);
+    
 svg.append('g')
     .attr('class', 'y-axis')
     .call(yAxis);
